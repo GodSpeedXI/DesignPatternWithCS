@@ -16,9 +16,10 @@ namespace DesignPatternPractice
             //Hr();
             //IteratorTest.Testing();
             //Hr();
-            DelegateMiddlewareEx.Run();
-            Hr();
-            ActionFunc.Run();
+            //DelegateMiddlewareEx.Run();
+            //Hr();
+            //ActionFunc.Run();
+            PipeConcept.Run();
         }
 
         static void Hr()

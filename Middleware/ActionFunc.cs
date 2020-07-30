@@ -19,7 +19,7 @@ namespace DesignPatternPractice.Middleware
                 TryActionFirst(msg, (msg) =>
                     TryActionSecond(msg, First));
 
-            pipe("Holly Shit");
+            pipe("Holy Shit");
         }
 
         private static void Action1(string msg)
