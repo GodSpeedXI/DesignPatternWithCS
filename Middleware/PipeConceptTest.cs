@@ -5,7 +5,7 @@ using System.Text;
 
 namespace DesignPatternPractice.Middleware
 {
-    public static class PipeConcept
+    public static class PipeConceptTest
     {
         public static void Run()
         {
