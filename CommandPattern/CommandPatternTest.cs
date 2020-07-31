@@ -19,12 +19,13 @@ namespace DesignPatternPractice.CommandPattern
 
             addJohnBtn.Click();
             addDakeBtn.Click();
+            addCusCommand.ExecuteUndo();
 
             var compoCommand = new CompositCommand();
             compoCommand.AddCommand(new AddCustomerCommand(cusService,
                 new CustomerModel {Id = 3, Age = 28, Name = "Kim"}));
             compoCommand.AddCommand(new AddCustomerCommand(cusService,
-                new CustomerModel {Id = 3, Age = 18, Name = "James"}));
+                new CustomerModel {Id = 4, Age = 18, Name = "James"}));
             compoCommand.AddCommand(new DeleteCustomerCommand(cusService, 1));
 
             var compoBtn = new CustomButton(compoCommand, null);

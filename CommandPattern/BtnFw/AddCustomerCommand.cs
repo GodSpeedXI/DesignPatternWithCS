@@ -3,9 +3,9 @@ using System.Windows.Input;
 
 namespace DesignPatternPractice.CommandPattern.BtnFw
 {
-    public class AddCustomerCommand : ICommand
+    public class AddCustomerCommand : ICommand, IUndoCommand
     {
-        private readonly CustomerModel _customerModel;
+        private CustomerModel _customerModel;
         private readonly CustomerService _customerService;
 
         public AddCustomerCommand(CustomerService customerService, CustomerModel customerModel = null)
@@ -26,10 +26,18 @@ namespace DesignPatternPractice.CommandPattern.BtnFw
         public void Execute(object parameter = null)
         {
             if (parameter?.GetType() == typeof(CustomerModel))
+            {
                 _customerService.AddCustomer((CustomerModel) parameter);
+                _customerModel = (CustomerModel) parameter;
+            }
             else if (!(_customerModel is null)) _customerService.AddCustomer(_customerModel);
+            
         }
 
         public event EventHandler CanExecuteChanged;
+        public void ExecuteUndo()
+        {
+            _customerService.DeleteCustomer(_customerModel.Id);
+        }
     }
 }

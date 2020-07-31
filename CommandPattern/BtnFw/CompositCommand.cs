@@ -13,9 +13,10 @@ namespace DesignPatternPractice.CommandPattern.BtnFw
     {
         private List<ICommand> _commandsList = new List<ICommand>();
 
-        public void AddCommand(ICommand cmd)
+        public ICommand AddCommand(ICommand cmd)
         {
             _commandsList.Add(cmd);
+            return cmd;
         }
 
         public bool CanExecute(object parameter)
