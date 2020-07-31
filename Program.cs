@@ -34,7 +34,7 @@ namespace DesignPatternPractice
 
         static void Hr()
         {
-            Console.WriteLine("==================");
+            "==================".Dump();
         }
     }
 }
