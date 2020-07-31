@@ -1,4 +1,5 @@
 ﻿using System;
+using DesignPatternPractice.CommandPattern;
 using DesignPatternPractice.IteratorPattern;
 using DesignPatternPractice.MementoPattern;
 using DesignPatternPractice.Middleware;
@@ -12,21 +13,23 @@ namespace DesignPatternPractice
     {
         static void Main(string[] args)
         {
-            //MementoTest.Testing();
-            //Hr();
-            //StateTest.Testing();
-            //Hr();
-            //IteratorTest.Testing();
-            //Hr();
-            //DelegateMiddlewareEx.Run();
-            //Hr();
-            //ActionFunc.Run();
-            //Hr();
-            //PipeConceptTest.Run();
-            //Hr();
-            //StategyPatternTest.Run();
-            //Hr();
+            MementoTest.Testing();
+            Hr();
+            StateTest.Testing();
+            Hr();
+            IteratorTest.Testing();
+            Hr();
+            DelegateMiddlewareEx.Run();
+            Hr();
+            ActionFunc.Run();
+            Hr();
+            PipeConceptTest.Run();
+            Hr();
+            StategyPatternTest.Run();
+            Hr();
             TemplateMethodTest.Run();
+            Hr();
+            CommandPatternTest.Run();
         }
 
         static void Hr()
