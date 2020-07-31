@@ -1,17 +1,16 @@
 ﻿using System;
-using System.Windows.Input;
 
 namespace DesignPatternPractice.CommandPattern.BtnFw
 {
-    public class DeleteCustomerCommand : ICommand
+    public class DeleteCustomerCommand : ICommandBase
     {
-        private readonly int _customerId;
+        private readonly CustomerModel _customer;
         private readonly CustomerService _customerService;
 
-        public DeleteCustomerCommand(CustomerService customerService, int customerId)
+        public DeleteCustomerCommand(CustomerService customerService, CustomerModel customer)
         {
             _customerService = customerService;
-            _customerId = customerId;
+            _customer = customer;
         }
 
         public bool CanExecute(object parameter)
@@ -19,13 +18,20 @@ namespace DesignPatternPractice.CommandPattern.BtnFw
             return true;
         }
 
-        public void Execute(object parameter)
+        public void Execute(object customer)
         {
-            if (parameter?.GetType() == typeof(CustomerModel))
-                _customerService.DeleteCustomer(((CustomerModel) parameter).Id);
-            else if (_customerId != 0) _customerService.DeleteCustomer(_customerId);
+            if (customer?.GetType() == typeof(CustomerModel))
+                _customerService.DeleteCustomer((CustomerModel) customer);
+            else if (!(_customer is null)) _customerService.DeleteCustomer(_customer);
         }
 
         public event EventHandler CanExecuteChanged;
+
+        public void ExecuteUndo()
+        {
+            _customerService.AddCustomer(_customer);
+        }
+
+        public bool IsUndo { get; set; }
     }
 }

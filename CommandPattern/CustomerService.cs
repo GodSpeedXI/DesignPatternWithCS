@@ -13,9 +13,9 @@ namespace DesignPatternPractice.CommandPattern
             "Customer added!!".Dump();
         }
 
-        public void DeleteCustomer(int customerId)
+        public void DeleteCustomer(CustomerModel customer)
         {
-            var toRemoveCm = _customerModels.FirstOrDefault(c => c.Id == customerId);
+            var toRemoveCm = _customerModels.FirstOrDefault(c => c.Id == customer.Id);
             _customerModels.Remove(toRemoveCm);
         }
 

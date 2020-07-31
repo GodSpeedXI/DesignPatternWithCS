@@ -3,10 +3,12 @@ using System.Windows.Input;
 
 namespace DesignPatternPractice.CommandPattern.BtnFw
 {
-    public class AddCustomerCommand : ICommand, IUndoCommand
+    public class AddCustomerCommand : ICommandBase
     {
         private CustomerModel _customerModel;
         private readonly CustomerService _customerService;
+
+        public bool IsUndo { get; set; }
 
         public AddCustomerCommand(CustomerService customerService, CustomerModel customerModel = null)
         {
@@ -37,7 +39,7 @@ namespace DesignPatternPractice.CommandPattern.BtnFw
         public event EventHandler CanExecuteChanged;
         public void ExecuteUndo()
         {
-            _customerService.DeleteCustomer(_customerModel.Id);
+            _customerService.DeleteCustomer(_customerModel);
         }
     }
 }

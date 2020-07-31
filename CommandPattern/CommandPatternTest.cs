@@ -22,11 +22,15 @@ namespace DesignPatternPractice.CommandPattern
             addCusCommand.ExecuteUndo();
 
             var compoCommand = new CompositCommand();
-            compoCommand.AddCommand(new AddCustomerCommand(cusService,
+            var addKimCmd = compoCommand.AddCommand(new AddCustomerCommand(cusService,
                 new CustomerModel {Id = 3, Age = 28, Name = "Kim"}));
-            compoCommand.AddCommand(new AddCustomerCommand(cusService,
+            var addJamesCmd = compoCommand.AddCommand(new AddCustomerCommand(cusService,
                 new CustomerModel {Id = 4, Age = 18, Name = "James"}));
-            compoCommand.AddCommand(new DeleteCustomerCommand(cusService, 1));
+            compoCommand.AddCommand(new AddCustomerCommand(cusService,
+                new CustomerModel { Id = 5, Age = 18, Name = "Boy" }));
+            compoCommand.AddCommand(new DeleteCustomerCommand(cusService, new CustomerModel(){Id = 3}));
+
+            compoCommand.AddCommand(addJamesCmd, true);
 
             var compoBtn = new CustomButton(compoCommand, null);
             compoBtn.Click();
