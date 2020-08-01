@@ -3,6 +3,7 @@ using DesignPatternPractice.CommandPattern;
 using DesignPatternPractice.IteratorPattern;
 using DesignPatternPractice.MementoPattern;
 using DesignPatternPractice.Middleware;
+using DesignPatternPractice.ObserverPattern;
 using DesignPatternPractice.StategyPattern;
 using DesignPatternPractice.StatePattern;
 using DesignPatternPractice.TemplateMethodPattern;
@@ -30,6 +31,8 @@ namespace DesignPatternPractice
             TemplateMethodTest.Run();
             Hr();
             CommandPatternTest.Run();
+            Hr();
+            ObserverPatternTest.Run();
         }
 
         static void Hr()
