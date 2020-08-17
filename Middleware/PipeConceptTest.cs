@@ -10,9 +10,9 @@ namespace DesignPatternPractice.Middleware
         public static void Run()
         {
             var pipe = new PipeBuilder(First)
-                .AddPipe(typeof(Wrapper2))
-                .AddPipe(typeof(Wrapper))
-                .AddPipe(typeof(Wrapper2))
+                .AddPipe<Wrapper2>()
+                .AddPipe<Wrapper>()
+                .AddPipe<Wrapper2>()
                 .Build();
 
             pipe("Execute1");
@@ -77,14 +77,14 @@ namespace DesignPatternPractice.Middleware
             _pipeTypes = new List<Type>();
         }
 
-        public PipeBuilder AddPipe(Type pipeType)
+        public PipeBuilder AddPipe<T>() where T : APipe
         {
-            if (pipeType.BaseType != null && !(pipeType.BaseType == typeof(APipe)))
-            {
-                throw new Exception("Not correct type.");
-            }
+            //if (T.BaseType != null && !(T.BaseType == typeof(APipe)))
+            //{
+            //    throw new Exception("Not correct type.");
+            //}
 
-            _pipeTypes.Add(pipeType);
+            _pipeTypes.Add(typeof(T));
             return this;
         }
 
